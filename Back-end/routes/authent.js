@@ -1,13 +1,32 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
+const { body, validationResult } = require("express-validator");
 
+router.post(
+  "/",
+  [
+    body("name").isLength({ min: 3 }),
+    body("email").isEmail(),
+    body("password").isLength({ min: 6 }),
+  ],
+  (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
 
-// Create a user using POST method
-router.post("/", (req, res) => {
-  const user = User(req.body);
-  user.save();
-  res.send(req.body);
-});
+    User.create({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+    })
+      .then((user) => res.json(user))
+      .catch((err) => {
+        console.log(err);
+        res.json({ err: "Please enter a unique email address!" });
+      });
+  }
+);
 
 module.exports = router;
