@@ -8,6 +8,7 @@
 
 :root {
   --white: "#fff";
+  --text-color: "#000";
 }
 
 html {
@@ -16,4 +17,5 @@ html {
 
 body {
   background-color: var(--white);
+  color: var(--text-color);
 }
