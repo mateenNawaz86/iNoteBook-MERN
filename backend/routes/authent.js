@@ -3,7 +3,8 @@ const router = express.Router();
 const User = require("../models/User");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
-var jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
+const fetchUser = require("../middleware/fetchUser");
 
 // create secret token for new user
 const JWT_SECRET = "mirani$62Mateen";
@@ -118,20 +119,15 @@ router.post(
 );
 
 // Route 3: Get user loggedIn data using: /api/authent/getUser => POST method, login required
-// router.post(
-//   "/login",
-//   [
-//     body("email", "Please enter a valid email address").isEmail(),
-//     body("password", "Password can't be blank!").exists(),
-//   ],
-//   async (req, res) => {
-//     try {
-//       userID = "todo";
-//       const user = await User.findById(userID).select("-password");
-//     } catch (error) {
-//       console.error(error.messsage);
-//       res.status(500).send("Internal server error occured!");
-//     }
-//   }
-// );
+router.post("/getUser", fetchUser, async (req, res) => {
+  try {
+    userID = req.user.id;
+    const user = await User.findById(userID).select("-password");
+    res.send(user);
+  } catch (error) {
+    console.error(error.messsage);
+    res.status(500).send("Internal server error occured!");
+  }
+});
+
 module.exports = router;
