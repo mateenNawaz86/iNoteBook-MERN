@@ -19,3 +19,7 @@ body {
   background-color: var(--white);
   color: var(--text-color);
 }
+
+.addNote {
+  margin-top: 70px;
+}
