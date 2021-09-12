@@ -1,9 +1,10 @@
 import React from "react";
+import Notes from "../Notes/Notes";
 
 const Home = () => {
   return (
     <>
-      <div className="container my-4">
+      <div className="container ">
         <h1 className="addNote">Add a new Note</h1>
         <form className="my-3">
           <div className="mb-3">
@@ -42,10 +43,7 @@ const Home = () => {
           </button>
         </form>
       </div>
-
-      <div className="container">
-        <h2>Your Notes is here!</h2>
-      </div>
+      <Notes />
     </>
   );
 };

@@ -12,5 +12,5 @@ app.use("/api/authent", require("./routes/authent"));
 app.use("/api/notes", require("./routes/notes"));
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`iNoteBook by Mirani listening at http://localhost:${port}`);
 });

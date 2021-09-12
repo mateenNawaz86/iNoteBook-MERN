@@ -1,13 +1,9 @@
-import React, { useContext } from "react";
-import NoteContext from "../../context/notes/NoteContext";
+import React from "react";
 
 const About = () => {
-  const values = useContext(NoteContext);
   return (
     <>
-      <h1>
-        Hello, from {values.name}! I'm doing my job as a {values.job}
-      </h1>
+      <h1>Hello, from About Component</h1>
     </>
   );
 };
