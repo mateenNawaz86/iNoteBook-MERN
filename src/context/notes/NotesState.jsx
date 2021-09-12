@@ -91,16 +91,20 @@ const NotesState = (props) => {
   // Add a NEW note
   const addNote = (title, description, tage) => {
     // TODO: 'API calling'
+    console.log("Add a new note successfully!");
+
     const newNote = {
       _id: "613c760abc3d3a6f91b5465f",
       user: "613c4744f4b2f133b78a44fc",
-      title: "Aftab Mirani",
-      description: "Hello, aftab khan please dear wake up! updated",
-      tage: "aftab notes",
+      title: title,
+      description: description,
+      tage: tage,
       date: "2021-09-11T09:25:30.818Z",
       __v: 0,
     };
-    setNotes(notes.push(newNote));
+
+    // add note to previous note list with the help of concat method
+    setNotes(notes.concat(newNote));
   };
 
   // Delete a note

@@ -2,32 +2,43 @@ import React, { useContext, useState } from "react";
 import NoteContext from "../../context/notes/NoteContext";
 
 const AddNote = () => {
+  
+  // function from NotesState create a brand new NOTE
   const contextData = useContext(NoteContext);
   const { addNote } = contextData;
 
+  // state for handling with input field values
   const [enteredNote, setEnteredNote] = useState({
     title: "",
     description: "",
     tage: "",
   });
 
+  // function for getting input values
   const inpChangeHandler = (event) => {
     setEnteredNote({
       ...enteredNote,
-      [event.target.name]: [event.target.value],
+      [event.target.name]: event.target.value,
     });
   };
+
+  // function for addiing new NOTE in the given array
+  const addNoteHandler = (event) => {
+    event.preventDefault();
+    addNote(enteredNote.title, enteredNote.description, enteredNote.tage);
+  };
+
   return (
     <>
       <div className="container ">
         <h1 className="addNote">Add a new Note</h1>
-        <form className="my-3">
+        <form className="my-3" onSubmit={addNoteHandler}>
           <div className="mb-3">
             <label htmlFor="title" className="form-label">
               Title
             </label>
             <input
-              type="email"
+              type="text"
               className="form-control"
               id="title"
               name="title"
@@ -48,7 +59,7 @@ const AddNote = () => {
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="exampleInputPassword1" className="form-label">
+            <label htmlFor="tage" className="form-label">
               Tage
             </label>
             <input
