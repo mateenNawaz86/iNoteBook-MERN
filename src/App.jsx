@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
 import NotesState from "./context/notes/NotesState";
+import Alert from "./components/Alert/Alert";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <NotesState>
         <Router>
           <Navbar />
+          <Alert />
           <div className="container my-5">
             <Switch>
               <Route exact path="/">

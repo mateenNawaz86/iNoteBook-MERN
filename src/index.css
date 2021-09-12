@@ -23,3 +23,7 @@ body {
 .addNote {
   margin-top: 70px;
 }
+
+.icons i {
+  cursor: pointer;
+}

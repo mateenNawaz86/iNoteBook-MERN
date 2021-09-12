@@ -5,10 +5,16 @@ const NoteItem = (props) => {
   return (
     <>
       <div className="col-lg-4">
-        <div class="card my-2">
-          <div class="card-body">
-            <h5 class="card-title">{notesData.title}</h5>
-            <p class="card-text">{notesData.description}</p>
+        <div className="card my-2">
+          <div className="card-body">
+            <div className="d-flex justify-content-between">
+              <h5 className="card-title">{notesData.title}</h5>
+              <div className="icons">
+                <i className="far fa-trash-alt mx-1" />
+                <i className="far fa-edit mx-1" />
+              </div>
+            </div>
+            <p className="card-text">{notesData.description}</p>
           </div>
         </div>
       </div>
