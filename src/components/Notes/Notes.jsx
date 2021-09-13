@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import NoteContext from "../../context/notes/NoteContext";
 import AddNote from "../AddNote/AddNote";
 import NoteItem from "./NoteItem";
@@ -6,8 +6,12 @@ import NoteItem from "./NoteItem";
 const Notes = () => {
   // Received notes from NotesState component
   const contextData = useContext(NoteContext);
-  const { notes } = contextData;
+  const { notes, getAllNotes } = contextData;
 
+  useEffect(() => {
+    getAllNotes();
+    // eslint-disable-next-line
+  }, []);
   return (
     <>
       <AddNote />
