@@ -13,7 +13,7 @@ const App = () => {
         <Router>
           <Navbar />
           <Alert />
-          <div className="container my-5">
+          <div className="container my-3">
             <Switch>
               <Route exact path="/">
                 <Home />

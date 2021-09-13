@@ -30,9 +30,9 @@ const AddNote = () => {
 
   return (
     <>
-      <div className="container ">
-        <h1 className="addNote">Add a new Note</h1>
-        <form className="my-3" onSubmit={addNoteHandler}>
+      <div className="container">
+        <h1 className="addNote text-center text-info">Add a new Note</h1>
+        <form className="my-2" onSubmit={addNoteHandler}>
           <div className="mb-3">
             <label htmlFor="title" className="form-label">
               Title

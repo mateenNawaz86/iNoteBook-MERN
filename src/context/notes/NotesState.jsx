@@ -91,8 +91,6 @@ const NotesState = (props) => {
   // Add a NEW note
   const addNote = (title, description, tage) => {
     // TODO: 'API calling'
-    console.log("Add a new note successfully!");
-
     const newNote = {
       _id: "613c760abc3d3a6f91b5465f",
       user: "613c4744f4b2f133b78a44fc",
@@ -107,9 +105,15 @@ const NotesState = (props) => {
     setNotes(notes.concat(newNote));
   };
 
-  // Delete a note
+  // Delete an existing note
   const deleteNote = (id) => {
-    setNotes();
+    // TODO: API calls
+
+    // show the existing notes after perform the delete operation
+    const newNotes = notes.filter((noteItem) => {
+      return noteItem._id !== id;
+    });
+    setNotes(newNotes);
   };
 
   // Edit an existing note
