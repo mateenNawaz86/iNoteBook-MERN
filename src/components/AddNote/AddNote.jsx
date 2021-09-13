@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import NoteContext from "../../context/notes/NoteContext";
 
 const AddNote = () => {
-  
   // function from NotesState create a brand new NOTE
   const contextData = useContext(NoteContext);
   const { addNote } = contextData;
@@ -60,7 +59,7 @@ const AddNote = () => {
           </div>
           <div className="mb-3">
             <label htmlFor="tage" className="form-label">
-              Tage
+              Tag
             </label>
             <input
               type="text"
