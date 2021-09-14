@@ -25,6 +25,11 @@ const AddNote = () => {
   const addNoteHandler = (event) => {
     event.preventDefault();
     addNote(enteredNote.title, enteredNote.description, enteredNote.tage);
+    setEnteredNote({
+      title: "",
+      description: "",
+      tage: "",
+    });
   };
 
   return (
@@ -43,6 +48,7 @@ const AddNote = () => {
               name="title"
               aria-describedby="emailHelp"
               onChange={inpChangeHandler}
+              value={enteredNote.title}
             />
           </div>
           <div className="mb-3">
@@ -55,6 +61,7 @@ const AddNote = () => {
               id="description"
               name="description"
               onChange={inpChangeHandler}
+              value={enteredNote.description}
             />
           </div>
           <div className="mb-3">
@@ -67,9 +74,16 @@ const AddNote = () => {
               id="tage"
               name="tage"
               onChange={inpChangeHandler}
+              value={enteredNote.tage}
             />
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button
+            disabled={
+              enteredNote.title.length < 3 || enteredNote.description.length < 6
+            }
+            type="submit"
+            className="btn btn-primary"
+          >
             Add Note
           </button>
         </form>

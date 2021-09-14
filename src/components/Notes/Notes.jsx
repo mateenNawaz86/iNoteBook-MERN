@@ -144,6 +144,10 @@ const Notes = () => {
                 Close
               </button>
               <button
+                disabled={
+                  enteredNote.editTitle.lenght < 3 ||
+                  enteredNote.editDescription.length < 6
+                }
                 onClick={updateNoteHandler}
                 type="button"
                 className="btn btn-primary"
@@ -158,16 +162,19 @@ const Notes = () => {
         <h2>Your Notes is here!</h2>
 
         <div className="row my-4">
-          {/* Loop over the notes array */}
-          {notes.map((noteItem, index) => {
-            return (
-              <NoteItem
-                key={index}
-                notesData={noteItem}
-                updateNotes={updateNote}
-              />
-            );
-          })}
+          <div className="container">
+            {notes.length === 0 && "No Notes Found!"}
+            {/* Loop over the notes array */}
+            {notes.map((noteItem, index) => {
+              return (
+                <NoteItem
+                  key={index}
+                  notesData={noteItem}
+                  updateNotes={updateNote}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     </>
