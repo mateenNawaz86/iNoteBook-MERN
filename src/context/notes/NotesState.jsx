@@ -38,6 +38,7 @@ const NotesState = (props) => {
       body: JSON.stringify({ title, description, tage }),
     });
     const json = response.json();
+    console.log(json);
 
     const newNote = {
       _id: "613c760abc3d3a6f91b5465f",
@@ -66,7 +67,7 @@ const NotesState = (props) => {
       },
     });
     const json = response.json();
-    console.log(json );
+    console.log(json);
 
     // show the existing notes after perform the delete operation
     const newNotes = notes.filter((noteItem) => {
@@ -80,7 +81,7 @@ const NotesState = (props) => {
     // API call
     let url = `${host}/api/notes/updateNote/${id}`;
     const response = await fetch(url, {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         "authen-token":
@@ -88,17 +89,22 @@ const NotesState = (props) => {
       },
       body: JSON.stringify({ title, description, tage }),
     });
-    const json = response.json();
+    const json = await response.json();
+    console.log(json);
 
+    let updatedNotes = JSON.parse(JSON.stringify(notes));
     // edit a note on client side
-    for (let ind = 0; ind < notes.length; ind++) {
-      const element = notes[ind];
+    for (let ind = 0; ind < updatedNotes.length; ind++) {
+      const element = updatedNotes[ind];
       if (element._id === id) {
-        element.title = title;
-        element.description = description;
-        element.tage = tage;
+        updatedNotes[ind].title = title;
+        updatedNotes[ind].description = description;
+        updatedNotes[ind].tage = tage;
+        break;
       }
     }
+
+    setNotes(updatedNotes);
   };
 
   return (

@@ -6,15 +6,19 @@ import NoteItem from "./NoteItem";
 const Notes = () => {
   // Received notes from NotesState component
   const contextData = useContext(NoteContext);
-  const { notes, getAllNotes } = contextData;
+  const { notes, getAllNotes, editNote } = contextData;
 
   useEffect(() => {
     getAllNotes();
     // eslint-disable-next-line
   }, []);
 
+  const ref = useRef(null);
+  const refClose = useRef(null);
+
   // state for handling with input field values
   const [enteredNote, setEnteredNote] = useState({
+    id: "",
     editTitle: "",
     editDescription: "",
     editTage: "",
@@ -28,21 +32,27 @@ const Notes = () => {
     });
   };
 
-  // function for addiing new NOTE in the given array
-  const addNoteHandler = (event) => {
-    event.preventDefault();
-  };
-
   const updateNote = (curNote) => {
     ref.current.click();
     setEnteredNote({
+      id: curNote._id,
       editTitle: curNote.title,
       editDescription: curNote.description,
       editTage: curNote.tage,
     });
   };
 
-  const ref = useRef(null);
+  // function for adding new NOTE in the given array
+  const updateNoteHandler = () => {
+    editNote(
+      enteredNote.id,
+      enteredNote.editTitle,
+      enteredNote.editDescription,
+      enteredNote.editTage
+    );
+    refClose.current.click();
+  };
+
   return (
     <>
       <AddNote />
@@ -80,7 +90,7 @@ const Notes = () => {
             </div>
             <div className="modal-body">
               <div className="container">
-                <form className="my-2" onSubmit={addNoteHandler}>
+                <form className="my-2">
                   <div className="mb-3">
                     <label htmlFor="editTitle" className="form-label">
                       Title
@@ -126,14 +136,19 @@ const Notes = () => {
             </div>
             <div className="modal-footer">
               <button
+                ref={refClose}
                 type="button"
                 className="btn btn-secondary"
                 data-bs-dismiss="modal"
               >
                 Close
               </button>
-              <button type="button" className="btn btn-primary">
-                Understood
+              <button
+                onClick={updateNoteHandler}
+                type="button"
+                className="btn btn-primary"
+              >
+                Update
               </button>
             </div>
           </div>
