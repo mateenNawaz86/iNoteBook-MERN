@@ -51,7 +51,12 @@ const Singup = (props) => {
     <>
       <div className="container">
         <h1 className="text-center text-primary">Sign Up</h1>
-        <form onSubmit={signUpHandler}>
+        <form
+          onSubmit={signUpHandler}
+          style={{
+            color: props.changeColor === "dark" ? "white" : "black",
+          }}
+        >
           <div className="mb-3">
             <label htmlFor="name" className="form-label">
               Name
@@ -64,6 +69,11 @@ const Singup = (props) => {
               autoComplete="off"
               onChange={inpChangeHandler}
               value={enteredInp.name}
+              style={{
+                color: props.changeColor === "dark" ? "white" : "black",
+                backgroundColor:
+                  props.changeColor === "dark" ? "#212529" : "white",
+              }}
             />
           </div>
           <div className="mb-3">
@@ -79,6 +89,11 @@ const Singup = (props) => {
               autoComplete="off"
               onChange={inpChangeHandler}
               value={enteredInp.email}
+              style={{
+                color: props.changeColor === "dark" ? "white" : "black",
+                backgroundColor:
+                  props.changeColor === "dark" ? "#212529" : "white",
+              }}
             />
           </div>
           <div className="mb-3">
@@ -95,6 +110,11 @@ const Singup = (props) => {
               value={enteredInp.password}
               required
               minLength={6}
+              style={{
+                color: props.changeColor === "dark" ? "white" : "black",
+                backgroundColor:
+                  props.changeColor === "dark" ? "#212529" : "white",
+              }}
             />
           </div>
           <div className="mb-3">
@@ -111,6 +131,11 @@ const Singup = (props) => {
               value={enteredInp.confPassword}
               required
               minLength={6}
+              style={{
+                color: props.changeColor === "dark" ? "white" : "black",
+                backgroundColor:
+                  props.changeColor === "dark" ? "#212529" : "white",
+              }}
             />
           </div>
           <button type="submit" className="btn btn-primary">

@@ -2,14 +2,21 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import NoteContext from "../../context/notes/NoteContext";
 import AddNote from "../AddNote/AddNote";
 import NoteItem from "./NoteItem";
+import { useHistory } from "react-router";
 
 const Notes = (props) => {
   // Received notes from NotesState component
   const contextData = useContext(NoteContext);
   const { notes, getAllNotes, editNote } = contextData;
 
+  const history = useHistory();
+
   useEffect(() => {
-    getAllNotes();
+    if (localStorage.getItem("token")) {
+      getAllNotes();
+    } else {
+      history.push("/login");
+    }
     // eslint-disable-next-line
   }, []);
 
@@ -41,7 +48,6 @@ const Notes = (props) => {
       editDescription: curNote.description,
       editTage: curNote.tage,
     });
-    
   };
 
   // function for adding new NOTE in the given array
@@ -58,7 +64,7 @@ const Notes = (props) => {
 
   return (
     <>
-      <AddNote showAlert={props.showAlert} />
+      <AddNote showAlert={props.showAlert} changeClr={props.changeClr} />
       <button
         type="button"
         className="btn btn-primary d-none"
@@ -162,23 +168,32 @@ const Notes = (props) => {
         </div>
       </div>
       <div className="container ">
-        <h2>Your Notes is here!</h2>
+        <h2 className='text-center'
+          style={{
+            color: props.changeClr === "dark" ? "white" : "black",
+          }}
+        >
+          Your Notes is here
+        </h2>
 
         <div className="row my-4">
-          <div className="container">
+          <div className="container mx-1 text-center" style={{
+            color: props.changeClr === "dark" ? "white" : "black",
+          }}>
             {notes.length === 0 && "No Notes Found!"}
-            {/* Loop over the notes array */}
-            {notes.map((noteItem, index) => {
-              return (
-                <NoteItem
-                  key={index}
-                  notesData={noteItem}
-                  updateNotes={updateNote}
-                  showAlert={props.showAlert}
-                />
-              );
-            })}
           </div>
+          {/* Loop over the notes array */}
+          {notes.map((noteItem, index) => {
+            return (
+              <NoteItem
+                key={index}
+                notesData={noteItem}
+                updateNotes={updateNote}
+                showAlert={props.showAlert}
+                changeClr={props.changeClr}
+              />
+            );
+          })}
         </div>
       </div>
     </>

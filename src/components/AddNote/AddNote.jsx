@@ -37,7 +37,13 @@ const AddNote = (props) => {
     <>
       <div className="container">
         <h1 className="addNote text-center text-info">Add a new Note</h1>
-        <form className="my-2" onSubmit={addNoteHandler}>
+        <form
+          className="my-2"
+          onSubmit={addNoteHandler}
+          style={{
+            color: props.changeClr === "dark" ? "white" : "black",
+          }}
+        >
           <div className="mb-3">
             <label htmlFor="title" className="form-label">
               Title
@@ -50,6 +56,11 @@ const AddNote = (props) => {
               aria-describedby="emailHelp"
               onChange={inpChangeHandler}
               value={enteredNote.title}
+              style={{
+                color: props.changeClr === "dark" ? "white" : "black",
+                backgroundColor:
+                  props.changeClr === "dark" ? "#212529" : "white",
+              }}
             />
           </div>
           <div className="mb-3">
@@ -63,6 +74,11 @@ const AddNote = (props) => {
               name="description"
               onChange={inpChangeHandler}
               value={enteredNote.description}
+              style={{
+                color: props.changeClr === "dark" ? "white" : "black",
+                backgroundColor:
+                  props.changeClr === "dark" ? "#212529" : "white",
+              }}
             />
           </div>
           <div className="mb-3">
@@ -76,6 +92,11 @@ const AddNote = (props) => {
               name="tage"
               onChange={inpChangeHandler}
               value={enteredNote.tage}
+              style={{
+                color: props.changeClr === "dark" ? "white" : "black",
+                backgroundColor:
+                  props.changeClr === "dark" ? "#212529" : "white",
+              }}
             />
           </div>
           <button

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -8,7 +8,12 @@ const Navbar = () => {
 
   // useLocation hook for changing active class
   let location = useLocation();
+  const history = useHistory();
 
+  const logoutHandler = () => {
+    localStorage.removeItem("token");
+    history.push("/login");
+  };
   return (
     <>
       <nav className="navbar navbar-expand-lg fixed-top shadow navbar-dark bg-dark">
@@ -54,14 +59,28 @@ const Navbar = () => {
                 </Link>
               </li>
             </ul>
-            <form className="d-flex">
-              <Link to="/login" className="btn btn-primary mx-1" type="submit">
-                Login
-              </Link>
-              <Link to="/signup" className="btn btn-success mx-1" type="submit">
-                Sign Up
-              </Link>
-            </form>
+            {!localStorage.getItem("token") ? (
+              <form className="d-flex">
+                <Link
+                  to="/login"
+                  className="btn btn-primary mx-1"
+                  type="submit"
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/signup"
+                  className="btn btn-success mx-1"
+                  type="submit"
+                >
+                  Sign Up
+                </Link>
+              </form>
+            ) : (
+              <button onClick={logoutHandler} className="btn btn-primary mx-1">
+                Logout
+              </button>
+            )}
           </div>
         </div>
       </nav>

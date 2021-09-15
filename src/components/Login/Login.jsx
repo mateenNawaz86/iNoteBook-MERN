@@ -30,9 +30,9 @@ const Login = (props) => {
     console.log(json);
     if (json.success) {
       // save the authenticate token
-      localStorage.setItem("token", json.authentToken);
-      history.push("/");
+      localStorage.setItem("token", json.authenToken);
       props.showAlert("Successfully Login", "success");
+      history.push("/");
     } else {
       props.showAlert("Invalid Credentials", "danger");
     }
@@ -40,9 +40,14 @@ const Login = (props) => {
 
   return (
     <>
-      <div className="container">
-        <h1 className="text-center text-primary">Login</h1>
-        <form onSubmit={loginHandler}>
+      <div className=" my-2">
+        <h1 className="text-center text-primary mb-4">Login to your Account</h1>
+        <form
+          onSubmit={loginHandler}
+          style={{
+            color: props.changeColor === "dark" ? "white" : "black",
+          }}
+        >
           <div className="mb-3">
             <label htmlFor="email" className="form-label">
               Email address
@@ -56,6 +61,11 @@ const Login = (props) => {
               autoComplete="off"
               onChange={inpChangeHandler}
               value={login.email}
+              style={{
+                color: props.changeColor === "dark" ? "white" : "black",
+                backgroundColor:
+                  props.changeColor === "dark" ? "#212529" : "white",
+              }}
             />
           </div>
           <div className="mb-3">
@@ -70,6 +80,11 @@ const Login = (props) => {
               name="password"
               onChange={inpChangeHandler}
               value={login.password}
+              style={{
+                color: props.changeColor === "dark" ? "white" : "black",
+                backgroundColor:
+                  props.changeColor === "dark" ? "#212529" : "white",
+              }}
             />
           </div>
           <button type="submit" className="btn btn-primary">

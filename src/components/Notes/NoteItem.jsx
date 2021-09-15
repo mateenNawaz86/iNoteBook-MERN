@@ -10,7 +10,13 @@ const NoteItem = (props) => {
     <>
       <div className="col-lg-4">
         <div className="card my-2">
-          <div className="card-body">
+          <div
+            className="card-body"
+            style={{
+              color: props.changeClr === "dark" ? "white" : "black",
+              backgroundColor: props.changeClr === "dark" ? "#778899" : "white",
+            }}
+          >
             <div className="d-flex justify-content-between">
               <h5 className="card-title">{notesData.title}</h5>
               <div className="icons">

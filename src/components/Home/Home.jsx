@@ -4,7 +4,7 @@ import Notes from "../Notes/Notes";
 const Home = (props) => {
   return (
     <>
-      <Notes showAlert={props.showAlert} />
+      <Notes showAlert={props.showAlert} changeClr={props.changeColor}/>
     </>
   );
 };
