@@ -14,7 +14,7 @@ const Navbar = () => {
       <nav className="navbar navbar-expand-lg fixed-top shadow navbar-dark bg-dark">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
-            iNoteBook
+            MyNotes
           </Link>
           <button
             className="navbar-toggler"
@@ -55,15 +55,12 @@ const Navbar = () => {
               </li>
             </ul>
             <form className="d-flex">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button className="btn btn-danger" type="submit">
-                Search
-              </button>
+              <Link to="/login" className="btn btn-primary mx-1" type="submit">
+                Login
+              </Link>
+              <Link to="/signup" className="btn btn-success mx-1" type="submit">
+                Sign Up
+              </Link>
             </form>
           </div>
         </div>

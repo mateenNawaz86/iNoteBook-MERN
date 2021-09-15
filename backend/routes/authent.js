@@ -22,6 +22,7 @@ router.post(
     }),
   ],
   async (req, res) => {
+    let success = false;
     // if there are errors return Bad request & error msg
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -34,7 +35,10 @@ router.post(
       if (user) {
         return res
           .status(400)
-          .json({ error: "User already exists with this email address!" });
+          .json({
+            success,
+            error: "User already exists with this email address!",
+          });
       }
 
       // Create a new user
@@ -59,7 +63,8 @@ router.post(
       console.log(authToken);
 
       // send user response as a TOKEN
-      res.json({ authToken });
+      success = true;
+      res.json({ success, authToken });
 
       // console the occurs error
     } catch (error) {
@@ -77,6 +82,7 @@ router.post(
     body("password", "Please enter your password").exists(),
   ],
   async (req, res) => {
+    let success = false;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -88,7 +94,7 @@ router.post(
       if (!user) {
         return res
           .status(400)
-          .json({ error: "Please enter a valid user info!" });
+          .json({ success, error: "Please enter a valid user info!" });
       }
 
       // compare the password with existing password
@@ -96,7 +102,7 @@ router.post(
       if (!pswCompare) {
         return res
           .status(400)
-          .json({ error: "Please enter a valid user info!" });
+          .json({ success, error: "Please enter a valid user info!" });
       }
 
       // return JWT = jsonToken
@@ -107,10 +113,11 @@ router.post(
       };
 
       const authToken = jwt.sign(data, JWT_SECRET);
+      success = true;
       console.log(authToken);
 
       // send user response as a TOKEN
-      res.json({ authToken });
+      res.json({ success, authToken });
     } catch (error) {
       console.error(error.messsage);
       res.status(500).send("Internal error occured!");
