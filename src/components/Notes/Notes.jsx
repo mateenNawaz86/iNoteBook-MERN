@@ -3,7 +3,7 @@ import NoteContext from "../../context/notes/NoteContext";
 import AddNote from "../AddNote/AddNote";
 import NoteItem from "./NoteItem";
 
-const Notes = () => {
+const Notes = (props) => {
   // Received notes from NotesState component
   const contextData = useContext(NoteContext);
   const { notes, getAllNotes, editNote } = contextData;
@@ -32,6 +32,7 @@ const Notes = () => {
     });
   };
 
+  // function for update an existing note
   const updateNote = (curNote) => {
     ref.current.click();
     setEnteredNote({
@@ -40,6 +41,7 @@ const Notes = () => {
       editDescription: curNote.description,
       editTage: curNote.tage,
     });
+    
   };
 
   // function for adding new NOTE in the given array
@@ -51,11 +53,12 @@ const Notes = () => {
       enteredNote.editTage
     );
     refClose.current.click();
+    props.showAlert("Update your note successfully!", "primary");
   };
 
   return (
     <>
-      <AddNote />
+      <AddNote showAlert={props.showAlert} />
       <button
         type="button"
         className="btn btn-primary d-none"
@@ -171,6 +174,7 @@ const Notes = () => {
                   key={index}
                   notesData={noteItem}
                   updateNotes={updateNote}
+                  showAlert={props.showAlert}
                 />
               );
             })}

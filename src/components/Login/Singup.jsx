@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-const Singup = () => {
+const Singup = (props) => {
   const host = "http://localhost:5000";
 
   const [enteredInp, setEnteredInp] = useState({
@@ -42,6 +42,9 @@ const Singup = () => {
       // save the authenticate token
       localStorage.setItem("token", json.authentToken);
       history.push("/");
+      props.showAlert("Account created Successfully!", "success");
+    } else {
+      props.showAlert("Invalid Inputs!", "warning");
     }
   };
   return (

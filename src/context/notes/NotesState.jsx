@@ -57,6 +57,7 @@ const NotesState = (props) => {
     });
     const json = response.json();
     console.log(json);
+    
 
     // show the existing notes after perform the delete operation
     const newNotes = notes.filter((noteItem) => {

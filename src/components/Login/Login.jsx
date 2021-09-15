@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-const Login = () => {
+const Login = (props) => {
   const host = "http://localhost:5000";
 
   const [login, setLogin] = useState({ email: "", password: "" });
@@ -28,10 +28,13 @@ const Login = () => {
     });
     const json = await response.json();
     console.log(json);
-    if(json.success) {
-        // save the authenticate token
-        localStorage.setItem('token', json.authentToken);
-        history.push('/');
+    if (json.success) {
+      // save the authenticate token
+      localStorage.setItem("token", json.authentToken);
+      history.push("/");
+      props.showAlert("Successfully Login", "success");
+    } else {
+      props.showAlert("Invalid Credentials", "danger");
     }
   };
 
