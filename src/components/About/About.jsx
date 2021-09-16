@@ -21,7 +21,7 @@ const About = (props) => {
               aria-controls="collapseOne"
               style={styleObj}
             >
-              <strong>Analyze your text</strong>
+              <strong>Save you notes</strong>
             </button>
           </h2>
           <div
@@ -31,8 +31,9 @@ const About = (props) => {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body">
-              Text <strong>transcription</strong> provides you a friendly way to
-              analyze your text as you want.
+              <strong>MyNotes</strong> app is very secure you can feel free to
+              use it for save your important notes in this web app. I hope you
+              enjoy this web app.
             </div>
           </div>
         </div>
@@ -57,10 +58,12 @@ const About = (props) => {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body">
-              Text <strong>transcription</strong> provides you quick, free
-              characters and words tools. You are <strong>eligible</strong> to
-              use it instantly for the text of your long document. This
-              application adds more relaxation to your life.
+              This web app is easy to use, you can use it as a normal web
+              application with <strong>credentials</strong>. You can easily add
+              new notes in your note list, you can update it when ever you want.
+              You can delete your existing note easily just with one click.
+              Updates and delete process is automatically update your notes in{" "}
+              <strong>database</strong> also.
             </div>
           </div>
         </div>
@@ -85,8 +88,8 @@ const About = (props) => {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body">
-              Text <strong>transcription</strong> provides you compatibility for
-              different browsers. It also gives you{" "}
+              This web app <strong>MyNotes</strong> provides you compatibility
+              for different browsers. It also gives you{" "}
               <strong>mobile-first</strong> approach flexibility. It is also
               responsible for all devices using <strong>Bootstrap v5</strong>.
             </div>
@@ -113,11 +116,13 @@ const About = (props) => {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body">
-              This beautiful application is created with the most famous{" "}
-              <strong>front-end library ReactJS</strong>. Text transcription
-              application is all about ReactJS basic features like{" "}
-              <strong>hooks, router, and built-in events functions</strong>.
-              Application styled with <strong>Bootstrap v5</strong>.
+              This beautiful web application is created by
+              <strong> Mateen Mirani</strong>. It contains four technologies
+              like <strong>MongoDB</strong> for database,
+              <strong>ExpressJS</strong> for web application framework,
+              <strong>ReactJS</strong> for front-end development, and
+              <strong>NodeJS</strong> for the server-side process. MyNotes web
+              app works smoothly
             </div>
           </div>
         </div>

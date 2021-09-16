@@ -50,7 +50,7 @@ const Singup = (props) => {
   return (
     <>
       <div className="container">
-        <h1 className="text-center text-primary">Sign Up</h1>
+        <h1 className="text-center text-primary mb-4">Sign Up to create an account</h1>
         <form
           onSubmit={signUpHandler}
           style={{
